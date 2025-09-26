@@ -90,8 +90,14 @@ public class NumberTriangle {
      *
      */
     public int retrieve(String path) {
-        // TODO implement this method
-        return -1;
+        if (path.equals("")) {
+            return this.root;
+        } if (path.charAt(0) == 'l') {
+            return this.left.retrieve(path.substring(1));
+        } else if (path.charAt(0) == 'r') {
+            return this.right.retrieve(path.substring(1));
+        }
+        return 0;
     }
 
     /** Read in the NumberTriangle structure from a file.
@@ -146,7 +152,7 @@ public class NumberTriangle {
 
     public static void main(String[] args) throws IOException {
 
-        NumberTriangle mt = NumberTriangle.loadTriangle("input_tree.txt");
+        NumberTriangle mt = NumberTriangle.loadTriangle("little_tree.txt");
 
         // [not for credit]
         // you can implement NumberTriangle's maxPathSum method if you want to try to solve
